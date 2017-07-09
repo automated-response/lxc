@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# Short name if necessary
+if [[ ${#LXC_NAME} -gt 8 ]]; then
+   export LXC_SHORT_NAME="${LXC_NAME:0:7}"
+else
+    export LXC_SHORTNAME="$LXC_NAME"
+fi
+
+# Replace veth.pair net name
+sed "s/-${LXC_SRC_NAME:0:8}/-${LXC_NAME:0:8}/g" -i "$LXC_CONFIG_FILE"
+
+# Add spacing
+sed "s/^# /\n# /g" -i "$LXC_CONFIG_FILE"

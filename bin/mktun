@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# Make directory
+if [ ! -d /dev/net ]; then
+    mkdir /dev/net
+    echo "Directory /dev/net created."
+else
+    echo "Directory /dev/net already exists."
+fi
+
+# Make device
+if [ ! -f /dev/net/tun ]; then
+    mknod /dev/net/tun c 10 200
+    chmod 0666 /dev/net/tun
+    echo "Device /dev/net/tun created."
+else
+    echo "Device /dev/net/tun already exists."
+fi
+
+exit 0

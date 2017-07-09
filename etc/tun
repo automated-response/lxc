@@ -1,0 +1,5 @@
+# Tun/Tap
+# Permit tun/tap cgroup and make device node if needed
+
+lxc.cgroup.devices.allow = c 10:200 rmw
+lxc.hook.start = /usr/local/bin/mktun
